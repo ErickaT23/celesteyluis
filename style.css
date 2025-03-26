@@ -41,6 +41,10 @@ html, body {
     perspective: 1000px;
     z-index: 10;
 }
+#envelope-top,
+#envelope-bottom {
+    will-change: transform;
+}
 #envelope-top, #envelope-bottom {
         position: absolute;
         width: 100%;
