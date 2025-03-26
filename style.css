@@ -246,6 +246,7 @@ html, body {
     background: linear-gradient(to right, #c6a994, #dac3ae, #e7d5c0, #dac3ae, #c6a994);
     -webkit-background-clip: text;
     color: transparent;
+    padding: 15px;
 }
 .contenedor-play {
     position: relative; /* Asegura que los elementos dentro se posicionen en relación al contenedor */
