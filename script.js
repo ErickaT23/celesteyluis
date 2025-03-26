@@ -12,37 +12,42 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentSlide = 0;
 
     // 📨 Abrir sobre y reproducir música
-    function openEnvelopeAndPlayMusic() {
-        const envelopeTop = document.getElementById("envelope-top");
-        const envelopeBottom = document.getElementById("envelope-bottom");
-        const envelope = document.getElementById("envelope");
-        const invitation = document.getElementById("invitation");
+function openEnvelopeAndPlayMusic() {
+    const envelopeTop = document.getElementById("envelope-top");
+    const envelopeBottom = document.getElementById("envelope-bottom");
+    const envelope = document.getElementById("envelope");
+    const invitation = document.getElementById("invitation");
 
-        // Paso 1: animación del sobre
-        requestAnimationFrame(() => {
-            envelopeTop.style.transform = 'translateY(-100vh)';
-            envelopeBottom.style.transform = 'translateY(100vh)';
-        });
+    // Paso 1: animación del sobre
+    requestAnimationFrame(() => {
+        envelopeTop.style.transform = 'translateY(-100vh)';
+        envelopeBottom.style.transform = 'translateY(100vh)';
+    });
 
-        // Paso 2: mostrar invitación
-        setTimeout(() => {
-            envelope.classList.add('hidden');
-            invitation.classList.remove('hidden');
-        }, 1000);
+    // Paso 2: mostrar invitación
+    setTimeout(() => {
+        envelope.classList.add('hidden');
+        invitation.classList.remove('hidden');
+    }, 1000);
 
-        // Paso 3: reproducir música con pequeño delay
-        setTimeout(() => {
-            audio.play().then(() => {
+    // Paso 3: reproducir música con pequeño delay
+    setTimeout(() => {
+        audio.play().then(() => {
+            // ✅ Ahora usamos requestIdleCallback para tareas menos urgentes
+            requestIdleCallback(() => {
                 iconoPlayPause.classList.remove("fa-play");
                 iconoPlayPause.classList.add("fa-pause");
                 updateProgress();
-            }).catch((error) => {
-                console.log('Playback failed: ', error);
+            });
+        }).catch((error) => {
+            console.log('Playback failed: ', error);
+            requestIdleCallback(() => {
                 iconoPlayPause.classList.add("fa-play");
                 iconoPlayPause.classList.remove("fa-pause");
             });
-        }, 100);
-    }
+        });
+    }, 100);
+}
 
     // 🖱️ Evento del sello (1 sola vez)
     seal.addEventListener("click", function (event) {
