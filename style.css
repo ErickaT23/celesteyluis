@@ -50,7 +50,7 @@ html, body {
         width: 100%;
         height: 50%;
         transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-        background-image: url('/images/enevelope.png');
+        background-image: url('/images/envelope.png');
         background-size: cover; /* Ajusta la imagen para que cubra el área */
         background-position: center; /* Centra la imagen */
         box-shadow: 0 4px 8px rgba(216, 198, 181, 0.5), 0 6px 20px rgba(216, 198, 181, 0.3);
@@ -127,8 +127,13 @@ html, body {
     margin-top: -800px;
 }
 .photo-text h2 {
-    font-size: 100px;
+    font-size: 120px;
     margin-top: -130px;
+}
+.photo-text h3{
+    font-size: 150px;
+    margin-top: -50px;
+    text-transform: capitalize;
 }
 .photo-text h1, .photo-text h2, .photo-text h3{
     color: white;
@@ -226,7 +231,9 @@ html, body {
     margin-bottom: 30px;
     margin-top: 0;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    color: #a68c76;
+    background: linear-gradient(to right, #c6a994, #dac3ae, #e7d5c0, #dac3ae, #c6a994);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 .padres-novia h1, .padres-novio h1, .blessing-section h1{
     font-size: 100px;
@@ -235,14 +242,12 @@ html, body {
     margin-top: 0;
     text-transform: initial;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    background: linear-gradient(to right, #c6a994, #dac3ae, #e7d5c0, #dac3ae, #c6a994);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #a68c76;
 }
 .blessing-section{
     margin-top: 40px;
 }
-.story-section h2, .itinerary-item h2, .dresscode-section h2, .filter-section h2, .wishes-section h2, .gallery-section h2, .playlist-section h2, .rsvp-section h2, .nochild-section h2, .itinerary-section h2, .travel-section h2, .dresscode-section h4{
+.story-section h2, .itinerary-item h2, .dresscode-section h2, .filter-section h2, .wishes-section h2, .gallery-section h2, .playlist-section h2, .rsvp-section h2, .nochild-section h2, .itinerary-section h2, .travel-section h2, .dresscode-section h4, .album-section h1, .album-section h2{
     font-size: 110px;
     margin-bottom: 50px;
     text-transform: initial;
@@ -267,8 +272,8 @@ html, body {
     z-index: 2; /* Asegura que esté sobre cualquier contenido debajo */
     padding: 20px; /* Ajusta el espacio interior si es necesario */
     box-sizing: border-box; /* Incluye el padding en el tamaño total */
-    margin-top: -30px;
-    margin-bottom: -100px;
+    margin-top: -150px;
+    margin-bottom: -120px;
     border-radius: 10px;
 }
 .contenedor-play .fa-play, .contenedor-play .fa-pause, .contenedor-play h1, .contenedor-play h2 .album-section h1, .album-section h2{
@@ -286,6 +291,7 @@ html, body {
     font-size: 110px;
     margin-bottom: 5px;
     text-transform: initial;
+    padding: 10px;
 }
 .contenedor-play h2 {
     font-size: 110px;
@@ -329,6 +335,11 @@ html, body {
 .itinerary-details {
     text-align: center;
 }
+.itinerary-item p{
+    font-size: 80px;
+    padding: 5px;
+    margin: 0;
+}
 .time-location {
     display: flex;
     justify-content: center;
@@ -343,6 +354,7 @@ html, body {
     margin: 0 10px;
     font-size: 80px;
     color: #6b5c53;
+    font-style: normal;
 }
 .time-location .time {
     font-size: 80px;
@@ -362,14 +374,14 @@ html, body {
     -webkit-background-clip: text;
     color: transparent;
 }
-.gifts-section p{
+.gifts-section p, .travel-section p{
     font-size: 80px;
     color: #6b5c53;
     margin: 10px;
     cursor: pointer;
 }
 .container {
-    max-width: 400px;
+    max-width: 1100px;
     margin: auto;
     padding: 20px;
     border-radius: 10px;
@@ -383,7 +395,7 @@ html, body {
     padding: 15px;
     border-radius: 8px;
 }
-.dresscode-section p, .playlist-section p, .rsvp-section p, .nochild-section p, .hospedaje p, .dresscode-section h3{
+.dresscode-section p, .playlist-section p, .rsvp-section p, .nochild-section p, .hospedaje p, .dresscode-section h3, .album-section p{
     margin: 10px 0;
     font-size: 80px;
     color: #6b5c53;
@@ -485,7 +497,7 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 .gallery-main {
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 .gallery-main img {
     width: 850px;
@@ -500,15 +512,15 @@ html, body {
 .gallery-thumbs {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
 }
 .gallery-thumbs img {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s;
@@ -620,6 +632,10 @@ footer .logo img {
 .album-section h1{
     color: #a68c76;
 }
+.album-section img{
+    width: 50%;
+    height: auto;
+}
 @media (max-width: 768px) {
     .main-content {
         padding: 0;
@@ -680,12 +696,12 @@ footer .logo img {
         font-size: 22px;
         padding: 10px;
     }
-    .story-section h2, .gifts-section h2, .dresscode-section h2, .filter-section h2, .rsvp-section h2, .wishes-section h2, .playlist-section h2, .gallery-section h2, .nochild-section h2, .album-section h1, h2, .itinerary-section h2, .hospedaje > h2, .beauty-section > h2, .travel-section h2{
+    .story-section h2, .gifts-section h2, .dresscode-section h2, .filter-section h2, .rsvp-section h2, .wishes-section h2, .playlist-section h2, .gallery-section h2, .nochild-section h2, .album-section h1, h2, .itinerary-section h2, .hospedaje > h2, .beauty-section > h2, .travel-section h2, .album-section h2{
         font-size: 40px;
         margin-bottom: 10px;
         text-transform: initial;
     }
-    .dresscode-section h3{
+    .dresscode-section h3, .album-section h1{
         font-size: 35px;
         margin-bottom: 10px;
         text-transform: initial;
@@ -783,6 +799,24 @@ footer .logo img {
         margin-top: 6px;
     }
     .details img{
+        width: 100%;
+        height: auto;
+    }
+    .details {
+        display: none;
+        margin-top: 15px;
+        text-align: center;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+    }
+    .gallery-thumbs{
+        gap: 10px;
+    }
+    .gallery-main{
+        margin-bottom: 20px;
+    }
+    .album-section img{
         width: 100%;
         height: auto;
     }
