@@ -519,8 +519,8 @@ html, body {
     align-items: center;
 }
 .gallery-thumbs img {
-    width: 280px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s;
