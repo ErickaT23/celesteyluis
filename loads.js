@@ -1,7 +1,7 @@
 const guests = [
         { id: "1", name: "Edwin Marroquin, Flor de Marroquin, Brenda Marroquin (hija) & Jorge Marroquin (hijo)", passes: 4 },
         { id: "2", name: "Lissette Rosal & Rogelio Rosal", passes: 2 },
-        { id: "3", name: "Aracely Maldonado, Amabilia Mendizabal & Abby Mendizabal", passes: 3},
+        { id: "3", name: "Aracely Maldonado, Amabilia Mendizabal & Abby Mendizabal", passes: 3, gender: "female" },
         { id: "4", name: "Johnny Mendizabal & Anny de Mendizabal", passes: 2 },
         { id: "5", name: "Karla Lili Marroquin, Karla Mendizabal", passes: 2 },
         { id: "6", name: "Paola de Donadio & Pancho Donadio", passes: 2 },
@@ -97,17 +97,27 @@ document.addEventListener("DOMContentLoaded", function() {
         let invitationText;
 
         if (guest.passes > 1) {
-            invitationText = `¡${guest.name}, están invitados!`;
+            // Contar cuántos son hombres y cuántas son mujeres (si se tiene la información de género)
+            let maleCount = (guest.genderList || []).filter(g => g === "male").length;
+            let femaleCount = (guest.genderList || []).filter(g => g === "female").length;
+        
+            if (maleCount > 0 && femaleCount === 0) {
+                invitationText = `¡${guest.name}, están invitados!`;
+            } else if (femaleCount > 0 && maleCount === 0) {
+                invitationText = `¡${guest.name}, están invitadas!`;
+            } else {
+                invitationText = `¡${guest.name}, están invitados e invitadas!`;
+            }
         } else {
             // Determinar si es "invitado" o "invitada"
             if (guest.gender === "male") {
-                invitationText = `¡${guest.name}, esta invitado!`;
+                invitationText = `¡${guest.name}, está invitado!`;
             } else if (guest.gender === "female") {
-                invitationText = `¡${guest.name}, esta invitada!`;
+                invitationText = `¡${guest.name}, está invitada!`;
             } else {
-                invitationText = `¡${guest.name}, esta invitado!`; // Respaldo si no tiene género definido
+                invitationText = `¡${guest.name}, está invitado!`; // Respaldo si no tiene género definido
             }
-        }
+        }        
 
         document.getElementById('guest-name').textContent = invitationText;
         document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'pase' : 'pases'}`;
