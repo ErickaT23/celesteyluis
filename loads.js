@@ -95,27 +95,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (guest) {
         let invitationText;
-
-        if (guest.passes > 1) {
-            // Contar cuántos son hombres y cuántas son mujeres (si se tiene la información de género)
-            let maleCount = (guest.genderList || []).filter(g => g === "male").length;
-            let femaleCount = (guest.genderList || []).filter(g => g === "female").length;
         
-            if (maleCount > 0 && femaleCount === 0) {
-                invitationText = `¡${guest.name}, están invitados!`;
-            } else if (femaleCount > 0 && maleCount === 0) {
+        if (guest.passes > 1) {
+            if (guest.gender === "female") {
                 invitationText = `¡${guest.name}, están invitadas!`;
             } else {
-                invitationText = `¡${guest.name}, están invitados e invitadas!`;
+                invitationText = `¡${guest.name}, están invitados!`;
             }
         } else {
-            // Determinar si es "invitado" o "invitada"
-            if (guest.gender === "male") {
-                invitationText = `¡${guest.name}, está invitado!`;
-            } else if (guest.gender === "female") {
-                invitationText = `¡${guest.name}, está invitada!`;
+            if (guest.gender === "female") {
+                invitationText = `¡${guest.name}, estás invitada!`;
             } else {
-                invitationText = `¡${guest.name}, está invitado!`; // Respaldo si no tiene género definido
+                invitationText = `¡${guest.name}, estás invitado!`;
             }
         }        
 
