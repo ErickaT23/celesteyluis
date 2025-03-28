@@ -47,7 +47,7 @@ const guests = [
         { id: "46", name: "Wendy Carias,plus one", passes: 2 },
         { id: "47", name: "Alex Carias, plus one", passes: 2 },
         { id: "48", name: "Jenny Castellanos, Andrea Caballero & Jafeth Caballero", passes: 3 },
-        { id: "49", name: "Cecilia Reyes, Isabel Reyes", passes: 2 },
+        { id: "49", name: "Cecilia Reyes, Isabel Reyes", passes: 2, gender: "female"},
         { id: "50", name: "Franklin Reyes &  Kenia Torres", passes: 2 },
         { id: "51", name: "Sally Lobo", passes: 1, gender: "female" },
         { id: "52", name: "Salome Moya", passes: 1, gender: "female" },
