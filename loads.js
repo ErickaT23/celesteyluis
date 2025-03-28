@@ -73,6 +73,7 @@ const guests = [
         { id: "72", name: "Carlos Regil, Gaby Regil", passes: 2 },
         { id: "73", name: "Janeth Hernandez & Edgardo", passes: 2 },
         { id: "74", name: "Usted", passes: 1 },
+        { id: "75", name: "Ustedes", passes: 2 },
     ];
 
 document.addEventListener("DOMContentLoaded", function() {
