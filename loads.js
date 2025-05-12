@@ -93,10 +93,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Buscar el invitado en el array
     const guest = guests.find(g => g.id === guestId);
-
     if (guest) {
         let invitationText;
-        
+    
         if (guest.passes > 1) {
             if (guest.gender === "female") {
                 invitationText = `¡${guest.name}, están invitadas!`;
@@ -109,12 +108,20 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 invitationText = `¡${guest.name}, estás invitado!`;
             }
-        }        
-
+        }
+    
         document.getElementById('guest-name').textContent = invitationText;
         document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'pase' : 'pases'}`;
+    
+        // ✅ Cambiar la fecha de confirmación solo para los IDs 74 y 75
+        if (guest.id === "74" || guest.id === "75") {
+            const confirmacionTexto = document.querySelector(".rsvp-section p");
+            if (confirmacionTexto) {
+                confirmacionTexto.textContent = "Para nosotros es muy importante que confirmes tu asistencia antes del 15 de Mayo, o bien indicarnos si no podrás acompañarnos.";
+            }
+        }
+    
     } else {
         document.getElementById('guest-name').textContent = `¡Invitado no encontrado!`;
         document.querySelector('.invitation-info-section').style.display = 'none';
-    }
-});
+        }
