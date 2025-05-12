@@ -75,53 +75,54 @@ const guests = [
         { id: "74", name: "Usted", passes: 1 },
         { id: "75", name: "Ustedes", passes: 2 },
     ];
-
-document.addEventListener("DOMContentLoaded", function() {
-    function getQueryParams() {
-        const params = {};
-        const queryString = window.location.search.substring(1);
-        const pairs = queryString.split("&");
-        for (const pair of pairs) {
-            const [key, value] = pair.split("=");
-            params[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, ' '));
-        }
-        return params;
-    }
-
-    const queryParams = getQueryParams();
-    const guestId = queryParams.id;
-
-    // Buscar el invitado en el array
-    const guest = guests.find(g => g.id === guestId);
-    if (guest) {
-        let invitationText;
-    
-        if (guest.passes > 1) {
-            if (guest.gender === "female") {
-                invitationText = `¡${guest.name}, están invitadas!`;
-            } else {
-                invitationText = `¡${guest.name}, están invitados!`;
+    document.addEventListener("DOMContentLoaded", function() {
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const pairs = queryString.split("&");
+            for (const pair of pairs) {
+                const [key, value] = pair.split("=");
+                params[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, ' '));
             }
+            return params;
+        }
+    
+        const queryParams = getQueryParams();
+        const guestId = queryParams.id;
+    
+        // Buscar el invitado en el array
+        const guest = guests.find(g => g.id === guestId);
+    
+        if (guest) {
+            let invitationText;
+    
+            if (guest.passes > 1) {
+                if (guest.gender === "female") {
+                    invitationText = `¡${guest.name}, están invitadas!`;
+                } else {
+                    invitationText = `¡${guest.name}, están invitados!`;
+                }
+            } else {
+                if (guest.gender === "female") {
+                    invitationText = `¡${guest.name}, estás invitada!`;
+                } else {
+                    invitationText = `¡${guest.name}, estás invitado!`;
+                }
+            }
+    
+            document.getElementById('guest-name').textContent = invitationText;
+            document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'pase' : 'pases'}`;
+    
+            // 👇 Aquí va el cambio personalizado para los IDs 74 y 75
+            if (guest.id === "74" || guest.id === "75") {
+                const confirmacionTexto = document.querySelector(".rsvp-section p");
+                if (confirmacionTexto) {
+                    confirmacionTexto.textContent = "Para nosotros es muy importante que confirmes tu asistencia antes del 15 de Mayo, o bien indicarnos si no podrás acompañarnos.";
+                }
+            }
+    
         } else {
-            if (guest.gender === "female") {
-                invitationText = `¡${guest.name}, estás invitada!`;
-            } else {
-                invitationText = `¡${guest.name}, estás invitado!`;
-            }
+            document.getElementById('guest-name').textContent = `¡Invitado no encontrado!`;
+            document.querySelector('.invitation-info-section').style.display = 'none';
         }
-    
-        document.getElementById('guest-name').textContent = invitationText;
-        document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'pase' : 'pases'}`;
-    
-        // ✅ Cambiar la fecha de confirmación solo para los IDs 74 y 75
-        if (guest.id === "74" || guest.id === "75") {
-            const confirmacionTexto = document.querySelector(".rsvp-section p");
-            if (confirmacionTexto) {
-                confirmacionTexto.textContent = "Para nosotros es muy importante que confirmes tu asistencia antes del 15 de Mayo, o bien indicarnos si no podrás acompañarnos.";
-            }
-        }
-    
-    } else {
-        document.getElementById('guest-name').textContent = `¡Invitado no encontrado!`;
-        document.querySelector('.invitation-info-section').style.display = 'none';
-        }
+    });
